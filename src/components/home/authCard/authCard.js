@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
 const AuthCard = () => {
-  const [loginScreen, setLoginScreen] = useState(true);
+  const [screen, setScreen] = useState("login");
   return (
     <div>
       <form onSubmit="">
-        {loginScreen ? undefined : (
+        {screen === "signup" ? (
           <label>
             name
             <input type="text" required />
           </label>
-        )}
+        ) : undefined}
         <label>
           Email
           <input type="email" />
@@ -19,7 +19,12 @@ const AuthCard = () => {
           Password
           <input type="password" />
         </label>
+        <p>Forgot password</p>
+        <input type="button" value="Create Account" />
       </form>
+      <p>
+        Don't have an account? <span>Sign up</span>
+      </p>
     </div>
   );
 };
