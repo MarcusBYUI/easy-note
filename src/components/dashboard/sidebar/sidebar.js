@@ -8,6 +8,7 @@ const Sidebar = () => {
   const [state, setState] = useState("");
   const [noteHover, setNoteHover] = useState(false);
   const [dropDown, setDropDown] = useState(false);
+  const [sidebar, setsideBar] = useState(false);
   const location = useLocation();
   useEffect(() => {
     if (location.pathname.includes("notes")) {
@@ -17,8 +18,19 @@ const Sidebar = () => {
     }
   }, [location.pathname]);
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${sidebar ? styles.view : undefined}`}>
       <div>
+        <button
+          onClick={() => setsideBar((prevState) => !prevState)}
+          className={`${styles.closeSidebar} ${
+            !sidebar ? styles.openstate : undefined
+          }`}
+        >
+          <img
+            src={require("../../../assets/arr_down.png")}
+            alt="close sidebar"
+          />
+        </button>
         <div className={styles.info}>
           <img src={require("../../../assets/avatar.png")} alt="avatar" />
           <div>
@@ -26,7 +38,9 @@ const Sidebar = () => {
             <span>marcusose@gmail.com</span>
           </div>
           <img
-            className={dropDown ? styles.rotate : undefined}
+            className={`${dropDown ? styles.rotate : undefined} ${
+              !sidebar ? styles.opaque : undefined
+            }`}
             onClick={() => setDropDown((prevState) => !prevState)}
             src={require("../../../assets/arr_down.png")}
             alt="dropdown"
@@ -40,6 +54,7 @@ const Sidebar = () => {
           </div>
         </div>
         <button
+          className={styles.newnote}
           onMouseEnter={() => setNoteHover(true)}
           onMouseLeave={() => setNoteHover(false)}
         >

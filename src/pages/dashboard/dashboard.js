@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <section className={styles.section}>
       <Sidebar />
-      <div>
+      <div className={styles.dashboard}>
         <Routes>
           <Route path="settings" exact element={<Settings />} />
           <Route path="notes" exact element={<Notes />} />

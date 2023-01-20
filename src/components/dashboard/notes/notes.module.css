@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 39px;
+    /* identical to box height */
+    color: #000000;
+}
