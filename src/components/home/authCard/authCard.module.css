@@ -2,7 +2,7 @@
     background: #ffffff;
     box-shadow: 0px 4px 41px rgba(197, 197, 197, 0.3);
     border-radius: 15px;
-    padding: 50px 40px;
+    padding: 25px 20px;
     display: grid;
     align-items: center;
 }
@@ -27,7 +27,7 @@
     background: #f4f5f5;
     border-radius: 10px;
     width: calc(100% - 30px);
-    height: 58px;
+    height: 46px;
     padding: 0 15px;
     margin-top: 10px;
 }
@@ -48,7 +48,7 @@
 }
 
 .auth form>input {
-    height: 58px;
+    height: 48px;
     width: 100%;
     background: #780ebe;
     border-radius: 10px;
@@ -85,4 +85,16 @@
 .auth>p span {
     color: #780ebe;
     font-weight: 600;
+}
+
+@media only screen and (min-width: 1000px) {
+    .container {
+        padding: 50px 40px;
+    }
+    .auth form label input {
+        height: 58px;
+    }
+    .auth form>input {
+        height: 58px;
+    }
 }

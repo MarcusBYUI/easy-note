@@ -1,19 +1,20 @@
 .hero {
     display: grid;
-    grid-template-columns: 40% 40%;
+    grid-template-columns: 1fr;
     justify-content: center;
-    gap: 15%;
+    align-items: center;
+    gap: 35px;
 }
 
 .hero h1 {
     font-style: normal;
-    font-size: 47px;
-    line-height: 68px;
+    font-size: 22px;
+    line-height: 41px;
     color: #000000;
 }
 
 header {
-    margin: 35px 0 80px 0;
+    margin: 35px 0;
 }
 
 header h2 {
@@ -25,4 +26,19 @@ header h2 {
     text-align: center;
     color: #780ebe;
     user-select: none;
+}
+
+@media only screen and (min-width: 1000px) {
+    .hero {
+        display: grid;
+        grid-template-columns: 40% 40%;
+        gap: 15%;
+    }
+    .hero h1 {
+        font-size: 47px;
+        line-height: 68px;
+    }
+    header {
+        margin: 35px 0 80px 0;
+    }
 }
