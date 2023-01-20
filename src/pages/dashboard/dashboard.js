@@ -1,13 +1,14 @@
 import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import Sidebar from "../../components/dashboard/sidebar/sidebar";
 import Settings from "../../components/dashboard/settings/settings";
 import Notes from "../../components/dashboard/notes/notes";
-import { Navigate, Route, Routes } from "react-router-dom";
+import styles from "./dashboard.module.css";
 
 const Dashboard = () => {
   return (
-    <section>
+    <section className={styles.section}>
       <Sidebar />
       <div>
         <Routes>
