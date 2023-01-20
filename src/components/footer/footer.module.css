@@ -1,3 +1,8 @@
+.container {
+    margin: 80px 0 38px 0;
+    user-select: none;
+}
+
 .container p {
     font-style: normal;
     font-weight: 500;

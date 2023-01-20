@@ -24,4 +24,5 @@ header h2 {
     /* identical to box height */
     text-align: center;
     color: #780ebe;
+    user-select: none;
 }
