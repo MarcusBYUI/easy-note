@@ -25,7 +25,7 @@ const Addnote = () => {
         </div>
         <div className={styles.control}>
           <button>
-            <img src={require("../../../../../assets/pinned.png")} alt="pin" />
+            <img src={require("../../../../../assets/pin.png")} alt="pin" />
           </button>
           <button>
             <img
