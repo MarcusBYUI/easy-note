@@ -26,11 +26,15 @@ const Addnote = () => {
 
   useEffect(() => {
     if (current) {
-      console.log(current);
       setTitleValue(current.title);
       setNoteValue(current.note);
       setColor(current.theme);
       setDateValue(current.date);
+    } else {
+      setTitleValue("");
+      setNoteValue("");
+      setColor("#E9FBC5");
+      setDateValue("");
     }
   }, [current]);
 

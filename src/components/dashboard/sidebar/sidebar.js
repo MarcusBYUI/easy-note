@@ -60,7 +60,10 @@ const Sidebar = () => {
           className={styles.newnote}
           onMouseEnter={() => setNoteHover(true)}
           onMouseLeave={() => setNoteHover(false)}
-          onClick={() => dispatch(noteSliceActions.setDisplay(true))}
+          onClick={() => {
+            dispatch(noteSliceActions.setDisplay(true));
+            setsideBar(false);
+          }}
         >
           <img
             src={require(`../../../assets/${
