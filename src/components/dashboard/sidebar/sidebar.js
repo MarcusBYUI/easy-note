@@ -62,6 +62,7 @@ const Sidebar = () => {
           onMouseLeave={() => setNoteHover(false)}
           onClick={() => {
             dispatch(noteSliceActions.setDisplay(true));
+            dispatch(noteSliceActions.setUpdate(false));
             setsideBar(false);
           }}
         >

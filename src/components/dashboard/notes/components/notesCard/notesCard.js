@@ -8,7 +8,10 @@ const NotesCard = ({ data }) => {
   const dispatch = useDispatch();
   return (
     <div
-      onClick={() => dispatch(noteSliceActions.setCurrent(data))}
+      onClick={() => {
+        dispatch(noteSliceActions.setCurrent(data));
+        dispatch(noteSliceActions.setUpdate(true));
+      }}
       className={styles.container}
       style={{ background: data.theme }}
     >

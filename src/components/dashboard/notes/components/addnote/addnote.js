@@ -22,7 +22,7 @@ const Addnote = () => {
   const [dateValue, setDateValue] = useState(null);
   const dispatch = useDispatch();
 
-  const { current } = useSelector((state) => state.note);
+  const { current, update } = useSelector((state) => state.note);
 
   useEffect(() => {
     if (current) {
@@ -30,13 +30,15 @@ const Addnote = () => {
       setNoteValue(current.note);
       setColor(current.theme);
       setDateValue(current.date);
-    } else {
+    }
+
+    if (!update) {
       setTitleValue("");
       setNoteValue("");
       setColor("#E9FBC5");
       setDateValue("");
     }
-  }, [current]);
+  }, [current, update]);
 
   return (
     <div className={styles.addnote}>
