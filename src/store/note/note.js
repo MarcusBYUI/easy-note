@@ -12,12 +12,16 @@ const noteSlice = createSlice({
   reducers: {
     setDisplay(state, action) {
       state.display = action.payload;
+      if (!action.payload) {
+        state.current = null;
+      }
     },
-    SetUpdate(state, action) {
+    setUpdate(state, action) {
       state.update = action.payload;
     },
-    SetCurrent(state, action) {
+    setCurrent(state, action) {
       state.current = action.payload;
+      state.display = true;
     },
   },
 });

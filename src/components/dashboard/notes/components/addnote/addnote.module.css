@@ -5,6 +5,7 @@
   display: grid;
   padding-left: 200px;
   gap: 20px;
+  overflow: hidden;
 }
 
 .cancel {
@@ -81,17 +82,20 @@
   padding-right: 9px;
 }
 
-.noteCard textarea::-webkit-scrollbar-track {
+.noteCard textarea::-webkit-scrollbar-track,
+.emailCard > div::-webkit-scrollbar-track {
   padding: 2px 0;
 }
 
-.noteCard textarea::-webkit-scrollbar {
+.noteCard textarea::-webkit-scrollbar,
+.emailCard > div::-webkit-scrollbar {
   display: block !important;
   width: 5px;
   height: 1px;
 }
 
-.noteCard textarea::-webkit-scrollbar-thumb {
+.noteCard textarea::-webkit-scrollbar-thumb,
+.emailCard > div::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #ffffff54 0%, #00000065 100%), #f9f1fe62;
   border-radius: 50px;
 }
@@ -117,6 +121,7 @@
   border-radius: 15px;
   padding: 7px 14px;
   justify-content: space-between;
+  position: relative;
 }
 
 .control button {
@@ -133,5 +138,84 @@
 
 .control button:hover,
 .control button.active {
-  background-color: #f9f1fe;
+  background-color: #f2deff;
+}
+
+.pallet {
+  position: absolute;
+  top: -465%;
+  right: -150%;
+  transition: all 500ms ease-in-out;
+}
+
+.show {
+  right: 0% !important;
+}
+
+.emailCard {
+  width: 65%;
+  background: #ffffff;
+  box-shadow: 0px 4px 41px rgba(197, 197, 197, 0.1);
+  border-radius: 15px;
+  justify-self: flex-end;
+  padding: 3%;
+  display: grid;
+  gap: 20px;
+  position: relative;
+  right: -80%;
+  transition: all 500ms ease-in-out;
+}
+
+.showEmailCard {
+  right: 0;
+}
+
+.emailCard > input {
+  width: -webkit-fill-available;
+  height: 42px;
+  background: #f4f5f5;
+  border-radius: 10px;
+  border: none;
+  padding-left: 10px;
+}
+
+.emailCard > input:focus-visible {
+  outline: none;
+}
+
+.emailCard > div {
+  background: #f9fbfb;
+  border-radius: 10px;
+  padding: 3%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  max-height: 60px;
+  overflow: scroll;
+}
+
+.emailCard p {
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #565656;
+}
+
+.emailCard > div > div {
+  display: flex;
+  gap: 10px;
+  background: #ffffff;
+  border: 1px solid #f9fbfb;
+  box-shadow: 0px 4px 41px rgba(197, 197, 197, 0.1);
+  border-radius: 9px;
+  padding: 8px;
+  align-items: center;
+}
+
+.emailCard > div > div img {
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
 }
