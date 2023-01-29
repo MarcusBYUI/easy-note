@@ -3,12 +3,15 @@ import React, { useState } from "react";
 import styles from "./sidebar.module.css";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { noteSliceActions } from "../../../store/note/note";
+import { useDispatch } from "react-redux";
 
 const Sidebar = () => {
   const [state, setState] = useState("");
   const [noteHover, setNoteHover] = useState(false);
   const [dropDown, setDropDown] = useState(false);
   const [sidebar, setsideBar] = useState(false);
+  const dispatch = useDispatch();
   const location = useLocation();
   useEffect(() => {
     if (location.pathname.includes("notes")) {
@@ -57,6 +60,7 @@ const Sidebar = () => {
           className={styles.newnote}
           onMouseEnter={() => setNoteHover(true)}
           onMouseLeave={() => setNoteHover(false)}
+          onClick={() => dispatch(noteSliceActions.setDisplay(true))}
         >
           <img
             src={require(`../../../assets/${

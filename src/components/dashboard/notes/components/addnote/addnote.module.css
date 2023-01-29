@@ -1,0 +1,112 @@
+.container {
+  width: 700px;
+  margin: 0 auto;
+  padding-top: 10%;
+  display: grid;
+  padding-left: 200px;
+  gap: 20px;
+}
+
+.cancel {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: #ffffff;
+  box-shadow: 0px 4px 21px rgba(197, 197, 197, 0.25);
+  border-radius: 15px;
+  justify-self: flex-end;
+  cursor: pointer;
+}
+
+.cancel:hover {
+  background: #f9f1fe;
+}
+
+.cancel img {
+  width: 10px;
+}
+
+.noteCard {
+  width: -webkit-fill-available;
+  padding: 25px;
+  box-shadow: 0px 4px 41px rgba(197, 197, 197, 0.1);
+  border-radius: 15px;
+}
+
+.noteCard > * {
+  margin: 10px 0;
+}
+
+.noteCard input,
+.noteCard textarea {
+  display: block;
+  border: none;
+  width: -webkit-fill-available;
+  background-color: transparent;
+}
+
+.noteCard input {
+  height: 36px;
+}
+
+.noteCard input::placeholder,
+.noteCard input {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 36px;
+  color: #000000;
+}
+
+.noteCard input:focus-visible,
+.noteCard textarea:focus-visible {
+  outline: none;
+}
+
+.noteCard textarea,
+.noteCard textarea::placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 29px;
+  /* identical to box height */
+  color: #565656;
+}
+
+.noteCard textarea {
+  height: 200px;
+  padding-left: 7px;
+  overflow-y: scroll;
+  text-align: justify;
+  padding-right: 9px;
+}
+
+.noteCard textarea::-webkit-scrollbar-track {
+  padding: 2px 0;
+}
+
+.noteCard textarea::-webkit-scrollbar {
+  display: block !important;
+  width: 5px;
+  height: 1px;
+}
+
+.noteCard textarea::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ffffff54 0%, #00000065 100%), #f9f1fe62;
+  border-radius: 50px;
+}
+
+.noteCard p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 21px;
+  /* identical to box height */
+  padding-left: 7px;
+  margin-top: 25px;
+  margin-bottom: 0;
+  color: #565656;
+}
+
+.control {
+}

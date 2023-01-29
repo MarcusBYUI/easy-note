@@ -2,7 +2,7 @@
     width: 100%;
     max-width: 350px;
     height: 100%;
-    position: absolute;
+    position: fixed;
     background-color: #f9fbfb;
     top: 0;
     left: -350px;

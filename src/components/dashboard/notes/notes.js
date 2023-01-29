@@ -3,6 +3,8 @@ import React from "react";
 import NotesHeader from "./components/notesHeader/notesHeader";
 import styles from "./notes.module.css";
 import NotesCard from "./components/notesCard/notesCard";
+import Addnote from "./components/addnote/addnote";
+import { useSelector } from "react-redux";
 
 const Notes = () => {
   const notes = [
@@ -80,6 +82,8 @@ const Notes = () => {
       collaborators: [{ email: "collaborator@gmail.com" }],
     },
   ];
+
+  const { display } = useSelector((state) => state.note);
   return (
     <main className={styles.main}>
       <NotesHeader />
@@ -108,6 +112,11 @@ const Notes = () => {
               return <NotesCard key={index} data={item} />;
             })}
         </div>
+      </section>
+      <section
+        className={`${styles.noteControl} ${display ? styles.show : undefined}`}
+      >
+        <Addnote />
       </section>
     </main>
   );

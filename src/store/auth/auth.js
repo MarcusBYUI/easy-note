@@ -14,7 +14,7 @@ const initialState = getFromLocalStorage("authState") || {
 };
 
 const authSlice = createSlice({
-  name: "authSlice",
+  name: "auth",
   initialState,
   reducers: {
     setLoginPop(state, action) {
