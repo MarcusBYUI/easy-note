@@ -1,11 +1,10 @@
 .container {
-  width: 700px;
-  margin: 0 auto;
-  padding-top: 10%;
+  width: 95%;
+  max-width: 700px;
+  margin: 5% auto;
   display: grid;
-  padding-left: 200px;
   gap: 20px;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .cancel {
@@ -190,7 +189,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
-  max-height: 60px;
+  max-height: 120px;
   overflow: scroll;
 }
 

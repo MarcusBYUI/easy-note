@@ -102,6 +102,19 @@ const Notes = () => {
       </section>
       <section className={styles.grid}>
         <div>
+          <img src={require("../../../assets/forme.png")} alt="pinned" />
+          <p>Shared</p>
+        </div>
+        <div className={styles.notes}>
+          {notes
+            .filter((item) => item.pinned)
+            .map((item, index) => {
+              return <NotesCard key={index} data={item} />;
+            })}
+        </div>
+      </section>
+      <section className={styles.grid}>
+        <div>
           <img src={require("../../../assets/notes.png")} alt="notes" />
           <p>Notes</p>
         </div>
