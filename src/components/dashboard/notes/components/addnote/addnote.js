@@ -20,6 +20,7 @@ const Addnote = () => {
   const [titleValue, setTitleValue] = useState("");
   const [noteValue, setNoteValue] = useState("");
   const [dateValue, setDateValue] = useState(null);
+  const [pinned, setPinned] = useState(null);
   const dispatch = useDispatch();
 
   const { current, update } = useSelector((state) => state.note);
@@ -30,6 +31,7 @@ const Addnote = () => {
       setNoteValue(current.note);
       setColor(current.theme);
       setDateValue(current.date);
+      setPinned(current.pinned);
     }
 
     if (!update) {
@@ -37,6 +39,7 @@ const Addnote = () => {
       setNoteValue("");
       setColor("#E9FBC5");
       setDateValue("");
+      setPinned(false);
     }
   }, [current, update]);
 
@@ -67,7 +70,10 @@ const Addnote = () => {
           <p>{dateValue ? dateValue : "27th Jan, 2023"}</p>
         </div>
         <div className={styles.control}>
-          <button>
+          <button
+            className={pinned ? styles.active : undefined}
+            onClick={() => setPinned((prevState) => !prevState)}
+          >
             <img src={require("../../../../../assets/pin.png")} alt="pin" />
           </button>
           <button
