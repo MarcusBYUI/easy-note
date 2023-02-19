@@ -1,87 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import NotesHeader from "./components/notesHeader/notesHeader";
 import styles from "./notes.module.css";
 import NotesCard from "./components/notesCard/notesCard";
 import Addnote from "./components/addnote/addnote";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getNotes } from "./noteactions";
 
 const Notes = () => {
-  const notes = [
-    {
-      title: "My Savings",
-      note: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since ...    ",
-      theme: "#C5FBEB",
-      date: "27th Jan. 2023",
-      pinned: true,
-      collaborators: [{ email: "collaborator@gmail.com" }],
-    },
-    {
-      title: "My Savings",
-      note: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since ...    ",
-      theme: "#fff",
-      date: "27th Jan. 2023",
-      pinned: true,
-      collaborators: [{ email: "collaborator@gmail.com" }],
-    },
-    {
-      title: "My Savings",
-      note: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since ...    ",
-      theme: "#E9FBC5",
-      date: "27th Jan. 2023",
-      pinned: true,
-      collaborators: [{ email: "collaborator@gmail.com" }],
-    },
-    {
-      title: "My Savings",
-      note: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since ...    ",
-      theme: "#fff",
-      date: "27th Jan. 2023",
-      pinned: true,
-      collaborators: [{ email: "collaborator@gmail.com" }],
-    },
-    {
-      title: "My Savings",
-      note: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since ...    ",
-      theme: "#C5E6FB",
-      date: "27th Jan. 2023",
-      pinned: false,
+  const dispatch = useDispatch();
 
-      collaborators: [{ email: "collaborator@gmail.com" }],
-    },
-    {
-      title: "My Savings",
-      note: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since ...    ",
-      theme: "#fff",
-      date: "27th Jan. 2023",
-      pinned: false,
-      collaborators: [{ email: "collaborator@gmail.com" }],
-    },
-    {
-      title: "My Savings",
-      note: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since ...    ",
-      theme: "#fff",
-      date: "27th Jan. 2023",
-      pinned: false,
-      collaborators: [{ email: "collaborator@gmail.com" }],
-    },
-    {
-      title: "My Savings",
-      note: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since ...    ",
-      theme: "#fff",
-      date: "27th Jan. 2023",
-      pinned: false,
-      collaborators: [{ email: "collaborator@gmail.com" }],
-    },
-    {
-      title: "My Savings",
-      note: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since ...    ",
-      theme: "#fff",
-      date: "27th Jan. 2023",
-      pinned: false,
-      collaborators: [{ email: "collaborator@gmail.com" }],
-    },
-  ];
+  const [notes, setNotes] = useState([]);
+
+  useEffect(() => {
+    (async function () {
+      const res = await getNotes(dispatch);
+      setNotes(res);
+    })();
+  }, [dispatch]);
 
   const { display } = useSelector((state) => state.note);
   return (

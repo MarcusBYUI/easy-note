@@ -33,7 +33,7 @@
 
 .notes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(332px, 350px));
   gap: 25px;
   margin-top: 25px;
 }
