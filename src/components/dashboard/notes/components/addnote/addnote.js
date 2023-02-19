@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import styles from "./addnote.module.css";
 import { noteSliceActions } from "../../../../../store/note/note";
+import { addNote, deleteNote, updateNote } from "../../noteactions";
 
 const Addnote = () => {
   const emails = [
@@ -43,15 +44,52 @@ const Addnote = () => {
     }
   }, [current, update]);
 
+  const handleSave = async () => {
+    const body = {
+      user_id: 1,
+      title: titleValue,
+      note: noteValue,
+      theme: color,
+      pinned: pinned,
+    };
+
+    if (current) {
+      //update existing post
+      await updateNote(dispatch, current.id, body);
+    } else {
+      await addNote(dispatch, body);
+    }
+  };
+
+  const handleDelete = async () => {
+    await deleteNote(dispatch, current.id);
+  };
+
   return (
     <div className={styles.addnote}>
       <div className={styles.container}>
-        <button
-          className={styles.cancel}
-          onClick={() => dispatch(noteSliceActions.setDisplay(false))}
-        >
-          <img src={require("../../../../../assets/cancel.png")} alt="close" />
-        </button>
+        <div className={styles.noteState}>
+          <div className={styles.deleteSave}>
+            <button className={styles.save} onClick={handleSave}>
+              <p>Save</p>
+            </button>
+            {current && (
+              <button className={styles.delete} onClick={handleDelete}>
+                <p>Delete</p>
+              </button>
+            )}
+          </div>
+          <button
+            className={styles.cancel}
+            onClick={() => dispatch(noteSliceActions.setDisplay(false))}
+          >
+            <img
+              src={require("../../../../../assets/cancel.png")}
+              alt="close"
+            />
+          </button>
+        </div>
+
         <div className={styles.noteCard} style={{ background: color }}>
           <input
             onChange={(e) => setTitleValue(e.target.value)}

@@ -1,0 +1,98 @@
+.messagebody {
+  width: 300px !important;
+  position: fixed !important;
+  top: -15% !important;
+  left: calc(50% - 160px) !important;
+  transition: all 500ms ease-in;
+  z-index: 16;
+  padding: 0 10px 5px 10px;
+  border-radius: 5px;
+}
+
+.whitebody {
+  background-color: #75149f;
+}
+
+.overlay {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.61);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 16;
+}
+
+.messagebody.appear {
+  top: 48% !important;
+  overflow: hidden;
+}
+
+.messagebody p {
+  width: auto !important;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.indeterminate {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.indeterminate:before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background-color: #ffffff;
+  animation: indeterminate_first 6.5s ease-out;
+}
+
+/* ==================================== loader ===================================== */
+
+.lds-dual-ring {
+  width: auto;
+  height: auto;
+}
+.lds-dual-ring:after {
+  content: " ";
+
+  display: block;
+  width: 35px;
+  height: 35px;
+  margin: 8px;
+  border-radius: 50%;
+  animation: lds-dual-ring 1.2s linear infinite;
+  border: 3px solid #75149f;
+  border-color: #75149f transparent #75149f transparent;
+  margin: 5px auto 0 auto;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.white {
+  width: auto;
+}
+
+@keyframes indeterminate_first {
+  0% {
+    left: 0%;
+    width: 100%;
+  }
+  100% {
+    left: 100%;
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .messagebody {
+    left: calc(50% - 150px) !important;
+  }
+}

@@ -9,6 +9,7 @@ import { getNotes } from "./noteactions";
 
 const Notes = () => {
   const dispatch = useDispatch();
+  const { message } = useSelector((state) => state.notification);
 
   const [notes, setNotes] = useState([]);
 
@@ -17,7 +18,7 @@ const Notes = () => {
       const res = await getNotes(dispatch);
       setNotes(res);
     })();
-  }, [dispatch]);
+  }, [dispatch, message]);
 
   const { display } = useSelector((state) => state.note);
   return (
@@ -36,7 +37,7 @@ const Notes = () => {
             })}
         </div>
       </section>
-      <section className={styles.grid}>
+      {/* <section className={styles.grid}>
         <div>
           <img src={require("../../../assets/forme.png")} alt="pinned" />
           <p>Shared</p>
@@ -48,7 +49,7 @@ const Notes = () => {
               return <NotesCard key={index} data={item} />;
             })}
         </div>
-      </section>
+      </section> */}
       <section className={styles.grid}>
         <div>
           <img src={require("../../../assets/notes.png")} alt="notes" />

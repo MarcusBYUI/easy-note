@@ -218,3 +218,39 @@
   height: 10px;
   cursor: pointer;
 }
+
+.noteState {
+  display: flex;
+  justify-content: space-between;
+}
+
+.save,
+.delete {
+  border: none;
+  background: #ffffff;
+  box-shadow: 0px 4px 21px rgba(197, 197, 197, 0.25);
+  border-radius: 9px;
+  justify-self: flex-end;
+  cursor: pointer;
+  padding: 0 22px;
+}
+
+.save:hover {
+  background: #f9f1fe;
+}
+
+.delete {
+  background: #fcbebe !important;
+}
+.delete:hover {
+  background: #f79e9e !important;
+}
+.save p,
+.delete p {
+  margin: 10px 0;
+}
+
+.deleteSave {
+  display: flex;
+  gap: 5px;
+}
