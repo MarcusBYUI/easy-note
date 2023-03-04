@@ -24,20 +24,22 @@ const Notes = () => {
   return (
     <main className={styles.main}>
       <NotesHeader />
-      <section className={styles.grid}>
-        <div>
-          <img src={require("../../../assets/pinned.png")} alt="pinned" />
-          <p>Pinned</p>
-        </div>
-        <div className={styles.notes}>
-          {notes
-            .filter((item) => item.pinned)
-            .map((item, index) => {
-              return <NotesCard key={index} data={item} />;
-            })}
-        </div>
-      </section>
-      {/* <section className={styles.grid}>
+      {notes?.length > 0 && (
+        <>
+          <section className={styles.grid}>
+            <div>
+              <img src={require("../../../assets/pinned.png")} alt="pinned" />
+              <p>Pinned</p>
+            </div>
+            <div className={styles.notes}>
+              {notes
+                .filter((item) => item.pinned)
+                .map((item, index) => {
+                  return <NotesCard key={index} data={item} />;
+                })}
+            </div>
+          </section>
+          {/* <section className={styles.grid}>
         <div>
           <img src={require("../../../assets/forme.png")} alt="pinned" />
           <p>Shared</p>
@@ -50,24 +52,28 @@ const Notes = () => {
             })}
         </div>
       </section> */}
-      <section className={styles.grid}>
-        <div>
-          <img src={require("../../../assets/notes.png")} alt="notes" />
-          <p>Notes</p>
-        </div>
-        <div className={styles.notes}>
-          {notes
-            .filter((item) => !item.pinned)
-            .map((item, index) => {
-              return <NotesCard key={index} data={item} />;
-            })}
-        </div>
-      </section>
-      <section
-        className={`${styles.noteControl} ${display ? styles.show : undefined}`}
-      >
-        <Addnote />
-      </section>
+          <section className={styles.grid}>
+            <div>
+              <img src={require("../../../assets/notes.png")} alt="notes" />
+              <p>Notes</p>
+            </div>
+            <div className={styles.notes}>
+              {notes
+                .filter((item) => !item.pinned)
+                .map((item, index) => {
+                  return <NotesCard key={index} data={item} />;
+                })}
+            </div>
+          </section>
+          <section
+            className={`${styles.noteControl} ${
+              display ? styles.show : undefined
+            }`}
+          >
+            <Addnote />
+          </section>
+        </>
+      )}
     </main>
   );
 };

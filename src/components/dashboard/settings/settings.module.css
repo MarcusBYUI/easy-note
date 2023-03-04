@@ -1,0 +1,69 @@
+.settings form {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  margin-top: 15%;
+}
+
+.settings form label,
+.settings form input {
+  display: block;
+}
+
+.settings form label {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  /* identical to box height */
+  color: #565656;
+  margin-bottom: 20px;
+}
+
+.settings form label input {
+  border: none;
+  background: #f4f5f5;
+  border-radius: 10px;
+  width: calc(100% - 30px);
+  height: 46px;
+  padding: 0 15px;
+  margin-top: 10px;
+}
+
+.settings form label input:focus-visible {
+  outline: none;
+}
+
+.settings form p {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  /* identical to box height */
+  text-align: center;
+  color: #780ebe;
+  cursor: pointer;
+}
+
+.settings form > input {
+  height: 48px;
+  width: 100%;
+  background: #780ebe;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  /* identical to box height */
+  color: #ffffff;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: all 500ms ease-in-out;
+}
+
+.settings form > input:hover {
+  border: 2px solid #780ebe;
+  background-color: #fff;
+  color: #780ebe;
+}
