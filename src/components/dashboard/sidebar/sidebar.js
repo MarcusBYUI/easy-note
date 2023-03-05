@@ -4,9 +4,10 @@ import styles from "./sidebar.module.css";
 import { NavLink, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { noteSliceActions } from "../../../store/note/note";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Sidebar = () => {
+  const { user } = useSelector((state) => state.auth);
   const [state, setState] = useState("");
   const [noteHover, setNoteHover] = useState(false);
   const [dropDown, setDropDown] = useState(false);
@@ -20,6 +21,7 @@ const Sidebar = () => {
       setState("settings");
     }
   }, [location.pathname]);
+
   return (
     <div className={`${styles.container} ${sidebar ? styles.view : undefined}`}>
       <div>
@@ -37,8 +39,10 @@ const Sidebar = () => {
         <div className={styles.info}>
           <img src={require("../../../assets/avatar.png")} alt="avatar" />
           <div>
-            <p>Marcus Ose</p>
-            <span>marcusose@gmail.com</span>
+            <p>
+              {user.first_name} {user.last_name}
+            </p>
+            <span>{user.email}</span>
           </div>
           <img
             className={`${dropDown ? styles.rotate : undefined} ${
