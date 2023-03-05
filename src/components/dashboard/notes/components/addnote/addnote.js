@@ -7,6 +7,8 @@ import { noteSliceActions } from "../../../../../store/note/note";
 import { addNote, deleteNote, updateNote } from "../../noteactions";
 
 const Addnote = () => {
+  const authState = useSelector((state) => state.auth.loggedIn);
+
   const emails = [
     "myko@gmail.com",
     "red@gmail.com",
@@ -55,14 +57,14 @@ const Addnote = () => {
 
     if (current) {
       //update existing post
-      await updateNote(dispatch, current.id, body);
+      await updateNote(dispatch, current.id, body, authState);
     } else {
-      await addNote(dispatch, body);
+      await addNote(dispatch, body, authState);
     }
   };
 
   const handleDelete = async () => {
-    await deleteNote(dispatch, current.id);
+    await deleteNote(dispatch, current.id, authState);
   };
 
   return (

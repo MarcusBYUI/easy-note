@@ -6,6 +6,7 @@ import { noteSliceActions } from "../../../../../store/note/note";
 
 const NotesCard = ({ data }) => {
   const dispatch = useDispatch();
+
   return (
     <div
       onClick={() => {

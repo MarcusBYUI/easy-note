@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  message: "Processing...",
-  display: false,
-  contractAction: false,
+  pushMessage: "",
+  message: "",
+  loading: false,
+  notify: false,
 };
 
 const notificationSlice = createSlice({
@@ -11,13 +12,19 @@ const notificationSlice = createSlice({
   initialState,
   reducers: {
     setMessage(state, action) {
+      state.loading = false;
       state.message = action.payload;
     },
-    setUpdateState(state) {
-      state.contractAction = !state.contractAction;
+    setloading(state, action) {
+      state.loading = action.payload;
     },
-    setDisplay(state, action) {
-      state.display = action.payload;
+    setNotify(state, action) {
+      state.loading = action.payload;
+
+      state.notify = action.payload;
+    },
+    setPushMessage(state, action) {
+      state.pushMessage = action.payload;
     },
   },
 });

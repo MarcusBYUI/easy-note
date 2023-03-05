@@ -2,42 +2,59 @@ import { notificationActions } from "../../../store/notification/notification";
 import { apiRequest } from "../../../helpers/connections";
 import { noteSliceActions } from "../../../store/note/note";
 
-export const getNotes = async (dispatch) => {
+export const getNotes = async (dispatch, auth) => {
   try {
-    const res = await apiRequest("api/notes");
+    const res = await apiRequest("api/notes", undefined, undefined, auth);
 
     return res;
   } catch (error) {
-    dispatch(notificationActions.setMessage("Cuuld not fetch notes"));
+    console.log(error);
   }
 };
 
-export const deleteNote = async (dispatch, id) => {
+export const deleteNote = async (dispatch, id, auth) => {
+  dispatch(notificationActions.setNotify(true));
+
   try {
-    await apiRequest("api/notes/" + id, undefined, "delete");
+    await apiRequest("api/notes/" + id, undefined, "delete", auth);
     dispatch(noteSliceActions.setDisplay(false));
-    dispatch(notificationActions.setMessage("Note delete sucessfully"));
   } catch (error) {
-    dispatch(notificationActions.setMessage("Could not delete note"));
+    if (error.info) {
+      dispatch(notificationActions.setMessage(error.info));
+    } else {
+      dispatch(notificationActions.setMessage("Something went wrong"));
+    }
   }
 };
 
-export const updateNote = async (dispatch, id, body) => {
+export const updateNote = async (dispatch, id, body, auth) => {
+  dispatch(notificationActions.setNotify(true));
   try {
-    await apiRequest("api/notes/" + id, body, "patch");
+    await apiRequest("api/notes/" + id, body, "patch", auth);
     dispatch(noteSliceActions.setDisplay(false));
-    dispatch(notificationActions.setMessage("Note updated sucessfully"));
+    dispatch(notificationActions.setNotify(false));
   } catch (error) {
-    dispatch(notificationActions.setMessage("Could not update note"));
+    if (error.info) {
+      dispatch(notificationActions.setMessage(error.info));
+    } else {
+      dispatch(notificationActions.setMessage("Something went wrong"));
+    }
   }
 };
 
-export const addNote = async (dispatch, body) => {
+export const addNote = async (dispatch, body, auth) => {
+  dispatch(notificationActions.setNotify(true));
+
   try {
-    await apiRequest("api/notes", body, "post");
+    await apiRequest("api/notes", body, "post", auth);
+    dispatch(notificationActions.setNotify(false));
+
     dispatch(noteSliceActions.setDisplay(false));
-    dispatch(notificationActions.setMessage("Note added sucessfully"));
   } catch (error) {
-    dispatch(notificationActions.setMessage("Could not add note"));
+    if (error.info) {
+      dispatch(notificationActions.setMessage(error.info));
+    } else {
+      dispatch(notificationActions.setMessage("Something went wrong"));
+    }
   }
 };

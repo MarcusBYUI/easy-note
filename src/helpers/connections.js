@@ -1,13 +1,12 @@
 import axios from "axios";
-//const BASEURL = "https://pigox-backend.onrender.com/";
+//const BASEURL = "https://backend.onrender.com/";
 const BASEURL = "http://localhost:8000/";
-
 export async function apiRequest(path, body = {}, method = "get", auth) {
   return new Promise(async (resolve, reject) => {
     let header = {};
     if (auth && auth.state)
       header = {
-        Authorization: `Bearer ${auth.token}`,
+        Authorization: `Token ${auth.token}`,
       };
     try {
       const response = await axios({
@@ -18,8 +17,8 @@ export async function apiRequest(path, body = {}, method = "get", auth) {
       });
       resolve(response.data);
     } catch (err) {
-      const error = new Error(err.message);
-      error.info = err.response.data;
+      const error = new Error(err);
+      error.info = err.response.data[Object.keys(err.response.data)[0]][0];
       reject(error);
     }
   });

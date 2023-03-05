@@ -9,22 +9,23 @@ import { getNotes } from "./noteactions";
 
 const Notes = () => {
   const dispatch = useDispatch();
-  const { message } = useSelector((state) => state.notification);
+  const { notify } = useSelector((state) => state.notification);
+  const authState = useSelector((state) => state.auth.loggedIn);
 
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     (async function () {
-      const res = await getNotes(dispatch);
+      const res = await getNotes(dispatch, authState);
       setNotes(res);
     })();
-  }, [dispatch, message]);
+  }, [dispatch, notify, authState]);
 
   const { display } = useSelector((state) => state.note);
   return (
     <main className={styles.main}>
       <NotesHeader />
-      {notes?.length > 0 && (
+      {notes?.length > 0 ? (
         <>
           <section className={styles.grid}>
             <div>
@@ -65,15 +66,17 @@ const Notes = () => {
                 })}
             </div>
           </section>
-          <section
-            className={`${styles.noteControl} ${
-              display ? styles.show : undefined
-            }`}
-          >
-            <Addnote />
-          </section>
+        </>
+      ) : (
+        <>
+          <p>You currently have no Notes</p>
         </>
       )}
+      <section
+        className={`${styles.noteControl} ${display ? styles.show : undefined}`}
+      >
+        <Addnote />
+      </section>
     </main>
   );
 };

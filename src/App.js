@@ -14,11 +14,9 @@ function App() {
     <>
       <Routes>
         <Route path="" exact element={<Home />} />
-        <Route path="user/*" exact element={<Dashboard />} />
-
-        {/* <Route element={<PrivateRoutes />}>
+        <Route element={<PrivateRoutes />}>
           <Route path="user/*" exact element={<Dashboard />} />
-        </Route> */}
+        </Route>
         <Route path={"*"} element={<Navigate replace to="" />} />
       </Routes>
       {notify && <Message message={message} loading={loading} />}
