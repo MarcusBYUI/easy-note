@@ -40,10 +40,25 @@ export const login = async (dispatch, form, navigate) => {
   }
 };
 
-export const updateUser = async (dispatch, body, auth) => {
+export const updateUser = async (
+  dispatch,
+  body,
+  auth,
+  user,
+  last_name,
+  first_name
+) => {
   dispatch(notificationActions.setNotify(true));
   try {
-    await apiRequest("api/auth/update", body, "patch", auth);
+    console.log(user.id);
+    await apiRequest("api/auth/update/" + user.id, body, "patch", auth);
+    const newuser = {
+      id: user.id,
+      email: user.email,
+      first_name,
+      last_name,
+    };
+    dispatch(authSliceActions.setUser(newuser));
     dispatch(notificationActions.setNotify(false));
   } catch (error) {
     if (error.info) {

@@ -13,7 +13,7 @@ const Settings = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
-    updateUser(dispatch, form, authState);
+    updateUser(dispatch, form, authState, user, last_name, first_name);
   };
 
   const [first_name, setFirst_name] = useState(user.first_name);
@@ -40,11 +40,6 @@ const Settings = () => {
             value={last_name}
             onChange={(e) => setLast_name(e.target.value)}
           />
-        </label>
-
-        <label>
-          Password
-          <input type="password" name="password" />
         </label>
         <input type="submit" value="Update" />
       </form>
