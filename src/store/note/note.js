@@ -4,6 +4,7 @@ const initialState = {
   display: false,
   update: false,
   current: null,
+  searchParam: "",
 };
 
 const noteSlice = createSlice({
@@ -22,6 +23,9 @@ const noteSlice = createSlice({
     setCurrent(state, action) {
       state.current = action.payload;
       state.display = true;
+    },
+    setSearchParam(state, action) {
+      state.searchParam = action.payload;
     },
   },
 });

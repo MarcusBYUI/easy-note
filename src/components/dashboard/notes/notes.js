@@ -11,15 +11,30 @@ const Notes = () => {
   const dispatch = useDispatch();
   const { notify } = useSelector((state) => state.notification);
   const authState = useSelector((state) => state.auth.loggedIn);
-
+  const { searchParam } = useSelector((state) => state.note);
+  const [raw, setraw] = useState([]);
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     (async function () {
       const res = await getNotes(dispatch, authState);
-      setNotes(res);
+      setraw(res);
     })();
   }, [dispatch, notify, authState]);
+
+  useEffect(() => {
+    const newArr = raw.filter((item) => {
+      if (
+        item.title.toLowerCase().includes(searchParam.toLowerCase()) ||
+        item.note.toLowerCase().includes(searchParam.toLowerCase())
+      ) {
+        return true;
+      }
+      return false;
+    });
+
+    setNotes(newArr);
+  }, [searchParam, raw]);
 
   const { display } = useSelector((state) => state.note);
   return (
