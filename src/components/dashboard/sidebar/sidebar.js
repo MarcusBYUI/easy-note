@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
 import styles from "./sidebar.module.css";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { noteSliceActions } from "../../../store/note/note";
 import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../home/authhelper";
 
 const Sidebar = () => {
   const { user } = useSelector((state) => state.auth);
@@ -12,8 +13,11 @@ const Sidebar = () => {
   const [noteHover, setNoteHover] = useState(false);
   const [dropDown, setDropDown] = useState(false);
   const [sidebar, setsideBar] = useState(false);
+  const authState = useSelector((state) => state.auth.loggedIn);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
+
   useEffect(() => {
     if (location.pathname.includes("notes")) {
       setState("notes");
@@ -53,6 +57,7 @@ const Sidebar = () => {
             alt="dropdown"
           />
           <div
+            onClick={() => logout(navigate, authState, dispatch)}
             className={`${styles.logoutPop} ${
               dropDown ? styles.show : undefined
             }`}

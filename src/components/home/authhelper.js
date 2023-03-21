@@ -68,3 +68,16 @@ export const updateUser = async (
     }
   }
 };
+
+export const logout = async (navigate, auth, dispatch) => {
+  dispatch(notificationActions.setNotify(true));
+
+  try {
+    await apiRequest("api/auth/logout", undefined, "POST", auth);
+    localStorage.clear("authState");
+    navigate("/");
+    dispatch(notificationActions.setNotify(false));
+  } catch (error) {
+    dispatch(notificationActions.setMessage("Something went wrong"));
+  }
+};
