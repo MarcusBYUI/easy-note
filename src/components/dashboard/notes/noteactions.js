@@ -18,6 +18,7 @@ export const deleteNote = async (dispatch, id, auth) => {
   try {
     await apiRequest("api/notes/" + id, undefined, "delete", auth);
     dispatch(noteSliceActions.setDisplay(false));
+    dispatch(notificationActions.setNotify(false));
   } catch (error) {
     if (error.info) {
       dispatch(notificationActions.setMessage(error.info));

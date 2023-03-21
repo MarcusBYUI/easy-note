@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASEURL = "http://100.25.196.27:8000/";
+const BASEURL = "http://easy.sleepoutside.xyz:8080/";
 //const BASEURL = "http://localhost:8000/";
 export async function apiRequest(path, body = {}, method = "get", auth) {
   return new Promise(async (resolve, reject) => {
