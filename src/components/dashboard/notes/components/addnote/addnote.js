@@ -36,14 +36,6 @@ const Addnote = () => {
       setDateValue(current.date);
       setPinned(current.pinned);
     }
-
-    if (!update) {
-      setTitleValue("");
-      setNoteValue("");
-      setColor("#E9FBC5");
-      setDateValue("");
-      setPinned(false);
-    }
   }, [current, update]);
 
   const handleSave = async () => {
@@ -61,9 +53,20 @@ const Addnote = () => {
     } else {
       await addNote(dispatch, body, authState);
     }
+
+    setTitleValue("");
+    setNoteValue("");
+    setColor("#E9FBC5");
+    setDateValue("");
+    setPinned(false);
   };
 
   const handleDelete = async () => {
+    setTitleValue("");
+    setNoteValue("");
+    setColor("#E9FBC5");
+    setDateValue("");
+    setPinned(false);
     await deleteNote(dispatch, current.id, authState);
   };
 
@@ -107,7 +110,11 @@ const Addnote = () => {
             placeholder="Note..."
             value={noteValue}
           ></textarea>
-          <p>{dateValue ? dateValue : "27th Jan, 2023"}</p>
+          <p>
+            {dateValue
+              ? new Date(dateValue).toLocaleString()
+              : new Date().toLocaleString()}
+          </p>
         </div>
         <div className={styles.control}>
           <button
@@ -118,7 +125,7 @@ const Addnote = () => {
           </button>
           <button
             className={`${emailCard ? styles.active : undefined}`}
-            onClick={() => setEmailCard((prevState) => !prevState)}
+            //onClick={() => setEmailCard((prevState) => !prevState)}
           >
             <img
               src={require("../../../../../assets/add.png")}

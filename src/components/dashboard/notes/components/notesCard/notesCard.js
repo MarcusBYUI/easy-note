@@ -19,7 +19,7 @@ const NotesCard = ({ data }) => {
       <h3>{data.title}</h3>
       <p>{data.note.slice(0, 150)}...</p>
       <div>
-        <span>{data.date}</span>
+        <span>{new Date(data.date).toLocaleString()}</span>
         {data.collaborators ? (
           <img
             src={require("../../../../../assets/avatar.png")}
