@@ -19,7 +19,7 @@ const Addnote = () => {
   ];
   const [color, setColor] = useState("#E9FBC5");
   const [pallet, setPallet] = useState(false);
-  const [emailCard, setEmailCard] = useState(false);
+  //const [emailCard, setEmailCard] = useState(false);
   const [titleValue, setTitleValue] = useState("");
   const [noteValue, setNoteValue] = useState("");
   const [dateValue, setDateValue] = useState(null);
@@ -124,8 +124,8 @@ const Addnote = () => {
             <img src={require("../../../../../assets/pin.png")} alt="pin" />
           </button>
           <button
-            className={`${emailCard ? styles.active : undefined}`}
-            //onClick={() => setEmailCard((prevState) => !prevState)}
+          //className={`${emailCard ? styles.active : undefined}`}
+          //onClick={() => setEmailCard((prevState) => !prevState)}
           >
             <img
               src={require("../../../../../assets/add.png")}
@@ -148,9 +148,10 @@ const Addnote = () => {
           </div>
         </div>
         <div
-          className={`${styles.emailCard} ${
-            emailCard ? styles.showEmailCard : undefined
-          }`}
+          // className={`${styles.emailCard} ${
+          //   emailCard ? styles.showEmailCard : undefined
+          // }`}
+          className={styles.emailCard}
         >
           <input type="email" placeholder="Email" />
           <div>
